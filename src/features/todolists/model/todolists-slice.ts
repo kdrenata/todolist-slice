@@ -1,14 +1,14 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit"
+import {createAsyncThunk, createSlice, nanoid} from "@reduxjs/toolkit"
 import {Todolist} from "@/features/todolists/api/todolistsApi.types.ts";
+import {todolistsApi} from "@/features/todolists/api/todolistsApi.ts";
 
 export const todolistsSlice = createSlice({
   name: "todolists",
   initialState: [] as DomainTodolist[],
   reducers: (create) => ({
     fetchTodolistsAC: create.reducer<{ todolists: Todolist[] }>((_state, action) => {
-      return action.payload.todolists.map((todolist)=>{
-        return {...todolist, filter: 'all'}
-      })
+      // 5
+      return action.payload.todolists.map((todolist)=>({...todolist, filter: 'all'}))
     }),
 
     deleteTodolistAC: create.reducer<{ id: string }>((state, action) => {
@@ -62,9 +62,50 @@ export const todolistsSlice = createSlice({
   },
 })
 
-export const { deleteTodolistAC, changeTodolistFilterAC, changeTodolistTitleAC, createTodolistAC, fetchTodolistsAC } = todolistsSlice.actions
-export const {selectTodolists} = todolistsSlice.selectors
+export const {
+  deleteTodolistAC,
+  changeTodolistFilterAC,
+  changeTodolistTitleAC,
+  createTodolistAC,
+  fetchTodolistsAC } = todolistsSlice.actions
+export const { selectTodolists } = todolistsSlice.selectors
 export const todolistsReducer = todolistsSlice.reducer
+
+
+// Thunk
+export const fetchTodolistsTC = createAsyncThunk(`${todolistsSlice.name}/fetchTodolistsTC`, (_arg, { dispatch }) => {
+  // 2 side effect
+  todolistsApi.getTodolists().then((res) => {
+    // 4 dispatch actions
+    dispatch(fetchTodolistsAC({ todolists: res.data }))
+  })
+})
+
+export type DomainTodolist = Todolist & {
+  filter: FilterValues
+}
+
+export type FilterValues = "all" | "active" | "completed"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const _todolistsReducer = createReducer(initialState, (builder) => {
 //   builder
@@ -76,9 +117,3 @@ export const todolistsReducer = todolistsSlice.reducer
 // export const createTodolistAC = createAction("todolists/createTodolist", (title: string) => {
 //   return { payload: { title, id: nanoid() } }
 // })
-
-export type DomainTodolist = Todolist & {
-  filter: FilterValues
-}
-
-export type FilterValues = "all" | "active" | "completed"

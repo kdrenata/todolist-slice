@@ -38,7 +38,7 @@ export const tasksSlice = createSlice({
   }),
   extraReducers: (builder) => {
     builder
-      .addCase(createTodolistAC, (state, action) => {
+      .addCase(createTodolistAC, (state, action) => {   // то что в колбэк ф - это классическмй редьюсер
         state[action.payload.id] = []
       })
       .addCase(deleteTodolistAC, (state, action) => {
