@@ -4,13 +4,12 @@ import { createTodolistAC } from "@/features/todolists/model/todolists-slice.ts"
 import { Todolists } from "@/features/todolists/ui/Todolists/Todolists"
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid2"
-import {nanoid} from "@reduxjs/toolkit";
 
 export const Main = () => {
   const dispatch = useAppDispatch()
 
   const createTodolist = (title: string) => {
-    dispatch(createTodolistAC({title, id: nanoid()}))
+    dispatch(createTodolistAC(title))
   }
 
   return (
