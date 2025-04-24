@@ -38,4 +38,82 @@ export const Header = () => {
       </Toolbar>
     </AppBar>
   )
+
+
+
+
+  // return (
+  //     <AppBar position="static" sx={{ mb: "30px", backgroundColor: "#2196f3" }}>
+  //       <Toolbar>
+  //         <Container
+  //             maxWidth="lg"
+  //             sx={{
+  //               display: "flex",
+  //               justifyContent: "space-between",
+  //               alignItems: "center",
+  //             }}
+  //         >
+  //           <IconButton
+  //               edge="start"
+  //               color="inherit"
+  //               aria-label="menu"
+  //               sx={{ borderRadius: "12px", backgroundColor: "rgba(255,255,255,0.1)" }}
+  //           >
+  //             <MenuIcon />
+  //           </IconButton>
+  //
+  //           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+  //             <NavButton
+  //                 sx={{
+  //                   backgroundColor: "#42a5f5",
+  //                   color: "#fff",
+  //                   fontWeight: "bold",
+  //                   borderRadius: "8px",
+  //                   px: 3,
+  //                   boxShadow: 3,
+  //                   "&:hover": {
+  //                     backgroundColor: "#64b5f6",
+  //                   },
+  //                 }}
+  //             >
+  //               Sign In
+  //             </NavButton>
+  //             <NavButton
+  //                 sx={{
+  //                   backgroundColor: "#42a5f5",
+  //                   color: "#fff",
+  //                   fontWeight: "bold",
+  //                   borderRadius: "8px",
+  //                   px: 3,
+  //                   boxShadow: 3,
+  //                   "&:hover": {
+  //                     backgroundColor: "#64b5f6",
+  //                   },
+  //                 }}
+  //             >
+  //               Sign Up
+  //             </NavButton>
+  //             <NavButton
+  //                 sx={{
+  //                   backgroundColor: "#2196f3",
+  //                   color: "#fff",
+  //                   fontWeight: "bold",
+  //                   borderRadius: "8px",
+  //                   px: 3,
+  //                   boxShadow: 3,
+  //                   "&:hover": {
+  //                     backgroundColor: "#64b5f6",
+  //                   },
+  //                 }}
+  //             >
+  //               FAQ
+  //             </NavButton>
+  //             <Switch color="default" onChange={changeMode} />
+  //           </Box>
+  //         </Container>
+  //       </Toolbar>
+  //     </AppBar>
+  // )
+
+
 }
