@@ -40,7 +40,6 @@ export const tasksSlice = createSlice({
     // ✅ todolists/createTodolistAC
     builder
       .addCase(createTodolistAC, (state, action) => {   // то что в колбэк ф - это классическмй редьюсер
-
         state[action.payload.id] = []
       })
       .addCase(deleteTodolistAC, (state, action) => {
@@ -50,8 +49,6 @@ export const tasksSlice = createSlice({
 })
 export const tasksReducer = tasksSlice.reducer
 export const {deleteTaskAC, changeTaskTitleAC, changeTaskStatusAC, createTaskAC} = tasksSlice.actions
-
-
 
 
 export type Task = {
