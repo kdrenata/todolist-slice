@@ -40,13 +40,13 @@ export const todolistsSlice = createSlice({
 
     // todolists/createTodolistAC     //это когда action сфoрмируется в redux-toolkit такое будет имя
     createTodolistAC: create.preparedReducer(
-      // подготавливаем
+      // подготавливаем , в первом callback мы генерируем payload, собираем данные как мы хотим
       (title: string) => ({
         payload: { title, id: nanoid(), },
       }),
 
       (state, action) => {
-        // изменяем
+        // изменяем state, во втором callback находится подредьюсер
         const newTodolist: DomainTodolist = {
           ...action.payload,
           filter: "all",
@@ -61,7 +61,7 @@ export const todolistsSlice = createSlice({
     selectTodolists : (state) => state,
   },
 })
-
+export const todolistsReducer = todolistsSlice.reducer
 export const {
   deleteTodolistAC,
   changeTodolistFilterAC,
@@ -69,7 +69,7 @@ export const {
   createTodolistAC,
   fetchTodolistsAC } = todolistsSlice.actions
 export const { selectTodolists } = todolistsSlice.selectors
-export const todolistsReducer = todolistsSlice.reducer
+
 
 
 // Thunk

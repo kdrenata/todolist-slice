@@ -8,7 +8,7 @@ import {fetchTodolistsTC, selectTodolists} from "@/features/todolists/model/todo
 export const Todolists = () => {
   // 6  здесь получаем тудулисты
   const todolists = useAppSelector(selectTodolists)
-
+  console.log(todolists)
   const dispatch = useAppDispatch()
 
   useEffect(() => {

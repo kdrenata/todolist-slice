@@ -31,14 +31,16 @@ export const tasksSlice = createSlice({
         task.title = action.payload.title
       }
     }),
-    // tasks/createTodolistAC      //это когда action сфoрмируется в redux-toolkit такое будет имя
+    // ❌ tasks/createTodolistAC      //это когда action сфoрмируется в redux-toolkit такое будет имя
     // createTodolistAC: create.reducer((state, action)=> {
     //
     // }),
   }),
   extraReducers: (builder) => {
+    // ✅ todolists/createTodolistAC
     builder
       .addCase(createTodolistAC, (state, action) => {   // то что в колбэк ф - это классическмй редьюсер
+
         state[action.payload.id] = []
       })
       .addCase(deleteTodolistAC, (state, action) => {
@@ -46,9 +48,9 @@ export const tasksSlice = createSlice({
       })
   },
 })
-
-export const {deleteTaskAC, changeTaskTitleAC, changeTaskStatusAC, createTaskAC} = tasksSlice.actions
 export const tasksReducer = tasksSlice.reducer
+export const {deleteTaskAC, changeTaskTitleAC, changeTaskStatusAC, createTaskAC} = tasksSlice.actions
+
 
 
 
